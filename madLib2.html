@@ -1,0 +1,76 @@
+<html>
+<head>
+<script language="JavaScript">
+
+var partsOfSpeech = ["plural noun "," vehicle ","a food ","onomatopoeia "," favorite food ","Store name ","Verb", "food", "noun", "Type in End"];
+var answers;
+var story = ["A man went to the store to buy ",". In the store there were shopping carts that looked like ",". In the first isle, their were boxes of ", " . They fell off the shelves and exploded they made a sound like ", ". When the man's shopping cart waas filled to the brim with ", ". He saw people start running out of the ", ". Babies were crying and people were ", ". The store erupted in hot ", ". The air smelled like ", " . The "];
+var count = 0;
+var instruct = false
+
+function getWords()
+{
+var wordBox = document.getElementById("response");
+partsOfSpeech[count] = wordBox.value;
+
+count++;
+
+if(count < partsOfSpeech.length)
+{
+prompt();
+}
+else
+{
+count = 0;
+document.getElementById("story").innerHTML = displayStory();
+}
+}
+
+function prompt()
+{
+document.getElementById("userEnter").style.visibility = "visible";
+document.getElementById("story").style.visibility = "hidden";
+document.getElementById("response").value = partsOfSpeech[count];
+}
+
+function insert()
+{
+alert("hello");
+}
+
+function displayStory()
+{
+var answer = "";
+var i;
+
+for (i = 0; i < partsOfSpeech.length; i++)
+{
+answer = answer + story[i] + partsOfSpeech[i];
+
+}
+
+if (i < story.length)
+{
+answer = answer + story[i];
+}
+document.getElementById("userEnter").style.visibility = "hidden";
+document.getElementById("story").style.visibility = "visible";
+return answer;
+alert(answer);
+}
+
+</script>
+</head>
+<body>
+<center>
+<h1>MadLib</h1>
+<input id="daButton" type="button" value="Click Here to Begin" onClick="prompt()"/>
+</center>
+<div id="userEnter" style="position:absolute; left:580; top: 120; visibility:hidden;">
+<input type = "text" id="response" value="" onfocusout="getWords()"/>
+</div>
+
+<div id="story" style="position:absolute; overflow:scroll; top:200; left:460; width:500; height: 250; visibility:hidden"></div>
+
+</body>
+</html>
