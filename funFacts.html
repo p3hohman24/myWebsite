@@ -1,0 +1,108 @@
+<html> 
+<head> 
+<script language="JavaScript">
+
+/*************** Algorithm ******************
+1. Start by testing which element has been chosen
+2. Aquire the element number 
+3. Display the elment along with the connected funfact that has the same element nuber
+4. Do this when the button is pressed.
+5. Clear the elements and return it to the first elemtns of the list
+6. Repeat when user chooses another president 
+7. Display the next elements depending on what president is chosen 
+8. Thats it
+
+*/
+
+
+var group = ["-- Choose a Character--","Michael","Pam","Jim","Kelly","Ryan","Kevin","Oscar","Dwight"];
+
+var facts = ["-- No president selected --","Steve Carell","Jenna Fischer","John Krasinski","Mindy Kaling","BJ Novak", "Brian Baumgratner","Oscar Nunez","Rainn Wilson"];
+    
+function loadData()
+{
+	var sum = 0;
+	for(var i = 0; i<group.length; i++)
+    {
+        var daList = document.getElementById("prez");
+  		var option = document.createElement("option");
+  		option.text = group[i];
+  		daList.add(option);
+    }
+}
+
+// This function identifies which element from the drop down has been selected. It calls the 
+// getIndex function to acquire what the index of the selected item. Then it displays the 
+// corresponding element in the facts list. (This is diplayed in the textbox on the web page.)
+function start()
+{
+   
+    
+     var selection = document.getElementById("prez");
+   //`   alert(getIndex("Michael"));
+    // alert(selection.value)
+     var daindex = getIndex(selection.value)
+     //alert(daIndex);
+     
+    
+     if(daindex == -1)
+     {
+         alert("An error has occured")
+     }
+    else
+    {
+         document.getElementById("funfact").value = facts[daindex];
+    }
+}
+
+// This function searches the group array for the element passed as a parameter
+// and returns the index number for that element in the array.
+function getIndex(d)
+{
+    
+    
+    
+    var answer = -1;
+    for(var i = 0; i<group.length; i = i+1)
+    {
+         
+        
+        if(group[i] == d ) 
+        {
+         answer = i;   
+        }
+    }
+    return answer;
+
+}
+
+
+
+</script>
+</head>
+<body background = "images/theoffice.jpg"/>
+<body onload="loadData()"> 
+<center>
+
+<br/>
+ <font color="white">
+<h1> Who Played Each Character On The Office?</h1>
+<p>
+ 
+    Click Here to <a href="index.html"> Return to my Homepage<a/>
+<p/> 
+
+<br/><br/>
+<table border = 3>
+	<tr>
+		<td>  	<select name="p1" id="prez"></select>	</td>
+		<td>	<input id="funFact" type="text" size="40"/> </td>
+	</tr>
+</table>
+<br/><br/>
+<input type="button" value="click" onclick="start()"/>
+</center>
+
+
+</body>
+</html>
