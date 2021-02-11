@@ -1,0 +1,103 @@
+<html> 
+<head> 
+<script language="JavaScript">
+
+
+var questions = ["5x5","5x6","5x7","5x8","5x9","5x10","5x11","5x12","5x13","5x14","Start test"];
+var answers = ["25","30","35","40","45","50","55","60","65","70"];
+
+var index = -1;
+var score = 0;
+
+
+// Create code in displayQuestion that will display the contents of the questions array, one 
+// element at a time. After the last element is displayed, the program should display the first
+// element again.
+function displayQuestion()
+{
+      index++;
+    var ans  = document.getElementById("answer").value = "";
+    var ques = document.getElementById("question");  
+    ques.value = questions[index];
+  
+   
+    
+    if(index == 10)
+    {
+        alert("You have finished the test");
+        alert("You scored " + score + "!")
+    
+        index = -1
+    }
+   // var ans = document.getElementById("answer").value = 
+}
+    
+
+// This function will first acquire the user's answer (from the textbox with the ID "answer". Then this function will pass that to the checkAnswer function (note: that there is a parameter.) The checkAnswer will return a true or a false. If that function returns true, then the score variable will increase by 1, and an alert should pop up saying "Correct" or something positive. If the checkAnswer function comes back false, then score doesn't increase but an alert should announce "incorect." or something similar. 
+function updateScore(correct)
+{
+
+    var ans = document.getElementById("answer").value;
+    var result = checkAnswer(ans);
+    if (result == true)
+    {
+        alert("Correct!")
+        score++;
+    }
+   else
+   {
+       alert("Sorry that's Incorrect")
+   }
+}
+    
+
+// This function takes a parameter which will be the users answer. If what the user has submitted the correct answer, this method should return true. Otherwise it should return false. 
+function checkAnswer(ans)
+{
+    var correct = false;
+    if(ans == answers[index])
+    {
+         correct = true;
+    }
+    else
+    {
+         correct = false;
+    }
+    return correct;
+}
+
+
+
+</script>
+</head>
+<body > 
+ <body background = "images/math.jpg"/>
+  <font color="White">
+<center>
+<br/>
+<h1>My Quiz</h1>
+<p>
+ 
+    Click Here to <a href="index.html"> Return to my Homepage<a/>
+<p/> 
+<br/><br/>
+<table border = 3>
+	<tr>
+		<td>  	<input id="question" type="text" size="70" readonly = true/>	</td>
+	</tr>
+	<tr height = "12"><td></td>
+	</tr>
+	<tr>
+		<td>	<input id="answer" type="text" size="70" onfocusout="updateScore()"/> </td>
+        
+	</tr>
+    
+	
+</table>
+<br/><br/>
+<input type="button" value="Display Question" onclick="displayQuestion()"/>
+</center>
+
+
+</body>
+</html>
