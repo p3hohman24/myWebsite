@@ -1,0 +1,127 @@
+<html>
+<head>
+<body background="images/island2.jpg">
+<script language = "JavaScript">
+
+var number = -1; //global variable while the page is loaded
+   //myList is a list of variables. "array".
+var myList = ["You find youself in a warm jungle surrounded by wildlife, you turn to see a group of vicious monkeys bounding across the treetops, they spot you and begin moving in your direction, Should you run?", "After the encounter in the jungle you decide to go somewhere a little less dangerous, you head towards the river, you see a boat, should you take it?", "After exiting the jungle through the river you find yourself on a white sand beach, would you like to take a swim?", "The wind picks up and the beach gets too cold for your comfort, you decide to head up to the mountains to find a cave, you find a large cave, would you like to sleep here for the night?" , "The End! Press Yes to see if you survived!"];
+var myAnswer = document.getElementById("answer");  
+var qNum = -1;
+var score = 0
+    
+    
+function displayStory()
+{
+    qNum++
+    number = number + 1
+    document.getElementById("story").value = (myList[number]);
+    
+}
+ 
+function adventure(num)
+{
+     if(qNum==-1)
+   {
+      if(num==1)
+       {
+         alert("To begin your adventure press Next Scenario")
+         document.getElementById("story").value = ("Welcome to your adventure!");
+       }
+   
+     else
+       {
+         alert("To begin your adventure press Next Scenario")
+           document.getElementById("story").value = ("Welcome to your adventure!");
+       }
+   }
+    //////////////////////////////////
+    if(qNum==0)
+   {
+      if(num==1)
+       {
+         alert("Good choice, those monkey's didn't look very nice")
+           score++
+       }
+   
+     else
+       {
+         alert("A bit dangerous, don't you think?")
+       }
+   }
+    ////////////////////////////////////////
+    if(qNum==1)
+    {
+        if(num==1)
+        {
+            alert("Smart, enjoy the boat ride!")
+            score++
+        }
+        else
+        {
+            alert("Are you planning on swimming?? Say hi to the piranha's for me")
+        }
+    }
+    ///////////////////////////////////////
+     if(qNum==2)
+    {
+        if(num==1)
+        {
+            alert("Bad idea, the currents are strong and the waves toss you around.")
+            score++
+        }
+        else
+        {
+            alert("Probably for the best, the waves look pretty big")
+            score++
+        }
+    }
+    /////////////////////////////////////////
+    if(qNum==3)
+    {
+        if(num==1)
+        {
+            alert("Turns out you weren't alone in the cave, be more careful next time.")
+            score++
+        }
+        else
+        {
+            alert("The cave could've been dangerous, you made the right choice")
+            score++
+        }
+    }
+    if(qNum == 4)
+    {
+        didiwin()
+    }
+}
+ 
+    function didiwin()
+    {
+    if( score > 3)
+        { 
+            alert("Congrats! You made great decisions! You survived!")
+        }
+    if(score < 4)
+        {
+            alert("Yikes, looks like your survival decisions weren't as good as you thought, try again sometime")
+        }
+    }
+</script>
+</head>
+<body>
+<center> 
+  
+<h1> Yes or No Adventure </h1>
+<h4> To begin your adventure press Next Scenario</h4>  <h4>Then choose either Yes or No and move to the next Scenario. Best of luck on your adventure.</h4>
+
+
+    <br><br>
+         <input type= "text" id = "story" size="150" readonly = true /><br><br>
+    <td>  	<input type="button" id = "ans1" value = "Yes" onclick="adventure(1)"/>	</td>
+<td>  	<input type="button" id = "ans2" value = "No" onclick="adventure(2)"/>	</td> 
+    <br> 
+<input type="button" value="Next Scenario" onClick="displayStory()">
+</center>
+</body>
+</html>
